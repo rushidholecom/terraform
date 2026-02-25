@@ -12,7 +12,7 @@ resource "aws_launch_template" "home_launch_template" {
   }
 
   vpc_security_group_ids =  [aws_security_group.security_group.id]
-  user_data = base64decode(<<-EOF
+  user_data = base64dencode(<<-EOF
   #!/bin/bash
   apt update -y
   apt install apache2 -y
@@ -33,7 +33,7 @@ resource "aws_launch_template" "mobile_launch_template" {
   }
 
   vpc_security_group_ids = [aws_security_group.security_group.id]
-  user_data = base64decode(<<-EOF
+  user_data = base64dencode(<<-EOF
   #!/bin/bash
   apt update -y
   apt install apache2 -y
@@ -54,7 +54,7 @@ resource "aws_launch_template" "laptop_launch_template" {
   }
 
   vpc_security_group_ids = [aws_security_group.security_group.id]
-  user_data = base64decode(<<-EOF
+  user_data = base64dencode(<<-EOF
   #!/bin/bash
   apt update -y
   apt install apache2 -y
