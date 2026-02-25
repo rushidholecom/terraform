@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_vpc" "easycrud-vpc" {
   tags = {
-    name = ${var.projet}-vpc
+    name = "${var.project}-vpc"
   }  
   cidr_block = var.vpc_cidr
 }
