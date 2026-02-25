@@ -11,7 +11,7 @@ variable "public_subnet_cidr" {
 }
 
 variable "private_subnet_cidr" {
-  default = "10.10.0.0/22"
+  default = "10.10.4.0/22"
 }
 
 variable "public_az" {
