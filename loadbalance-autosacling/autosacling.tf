@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "home_auto_sacling" {
-  name = "${var.project}-${var.env}-asg"
+  name = "${var.project}-${var.env}-home-asg"
   availability_zones = ["ap-southeast-1a", "ap-southeast-1b"]
   desired_capacity = 1
   min_size = 1
@@ -22,7 +22,7 @@ resource "aws_autoscaling_policy" "home_policy" {
 }
 
 resource "aws_autoscaling_group" "mobile_auto_sacling" {
-  name = "${var.project}-${var.env}-asg"
+  name = "${var.project}-${var.env}-mobile-asg"
   availability_zones = ["ap-southeast-1a", "ap-southeast-1a"]
   desired_capacity = 1
   min_size = 1
@@ -45,7 +45,7 @@ resource "aws_autoscaling_policy" "mobile_policy" {
 }
 
 resource "aws_autoscaling_group" "laptop_auto_sacling" {
-  name = "${var.project}-${var.env}-asg"
+  name = "${var.project}-${var.env}-laptop-asg"
   availability_zones = ["ap-southeast-1a", "ap-southeast-1a"]
   desired_capacity = 1
   min_size = 1
