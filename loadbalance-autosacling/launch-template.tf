@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-southeast-"
+  region = "ap-southeast-1"
 }
 
 resource "aws_launch_template" "home_launch_template" {
