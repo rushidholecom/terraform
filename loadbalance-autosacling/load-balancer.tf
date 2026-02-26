@@ -1,7 +1,7 @@
 resource "aws_lb_target_group" "home_target_group" {
   name = "${var.project}-${var.env}-home-tg"
   port = 80
-  protocol = "http"
+  protocol = "HTTP"
   vpc_id = data.aws_vpc.default
   health_check {
     enabled = true
