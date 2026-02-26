@@ -4,7 +4,7 @@ data "aws_vpc" "default" {
 
 resource "aws_security_group" "security_group" {
   name = "${var.project}-${var.env}-sg"
-  vpc_id = data.aws_vpc.default
+  vpc_id = data.aws_vpc.default.id
   ingress {
         from_port = 80
         to_port = 80
