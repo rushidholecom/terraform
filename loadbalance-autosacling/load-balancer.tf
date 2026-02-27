@@ -10,7 +10,7 @@ data "aws_subnets" "subnet-1" {
 resource "aws_lb" "lb" {
   name = "${var.project}-${var.env}-lb"
   load_balancer_type = "application"
-  security_groups = [aws_security_group.security_group]
+  security_groups = [aws_security_group.security_group.id]
   internal = false
   subnets = data.aws_subnets.subnet-1
 }
