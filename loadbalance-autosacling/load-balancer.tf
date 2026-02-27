@@ -1,38 +1,16 @@
-resource "aws_lb_target_group" "home_target_group" {
-  name = "${var.project}-${var.env}-home-tg"
-  port = 80
-  protocol = "HTTP"
-  vpc_id = data.aws_vpc.default.id
-  health_check {
-    enabled = true
-    path = "/"
-    port = "traffic-port"
-    protocol = "HTTP"
-  }
+data "aws_subnets" "subnet-1" {
+    filter {
+      name = "vpc-id"
+      values = [data.aws_vpc.default]
+    }
+
 }
 
-resource "aws_lb_target_group" "mobile_target_group" {
-  name = "${var.project}-${var.env}-mobile-tg"
-  port = 80
-  protocol = "HTTP"
-  vpc_id = data.aws_vpc.default.id
-  health_check {
-    enabled = true
-    path = "/mobile"
-    port = "traffic-port"
-    protocol = "HTTP"
-  }
-}
 
-resource "aws_lb_target_group" "laptop_target_group" {
-  name = "${var.project}-${var.env}-laptop-tg"
-  port = 80
-  protocol = "HTTP"
-  vpc_id = data.aws_vpc.default.id
-  health_check {
-    enabled = true
-    path = "/laptop"
-    port = "traffic-port"
-    protocol = "HTTP"
-  }
+resource "aws_lb" "lb" {
+  name = "${var.project}-${var.env}-lb"
+  load_balancer_type = "application"
+  security_groups = [aws_security_group.security_group]
+  internal = false
+  subnets = data.aws_subnets.subnet-1
 }
