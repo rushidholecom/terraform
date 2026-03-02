@@ -20,7 +20,7 @@ resource "aws_lb_listener" "lb_listener" {
   port = 80
   protocol = "HTTP"
   default_action {
-    type = "forword"
+    type = "forward"
     target_group_arn = aws_lb_target_group.home_target_group.arn
   }
 }
@@ -30,7 +30,7 @@ resource "aws_lb_listener_rule" "mobile_listner_rule" {
   priority = 100
 
   action {
-    type = "forword"
+    type = "forward"
     target_group_arn = aws_lb_target_group.mobile_target_group.arn
   }
   condition {
@@ -44,7 +44,7 @@ resource "aws_lb_listener_rule" "laptop_listerner_rule" {
   listener_arn = aws_lb_target_group.laptop_target_group.arn
   priority = 101
   action {
-    type = "forword"
+    type = "forward"
     target_group_arn = aws_lb_target_group.laptop_target_group.arn
   }
   condition {
