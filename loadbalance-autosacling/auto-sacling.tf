@@ -66,3 +66,20 @@ resource "aws_autoscaling_policy" "laptop_policy" {
     }
   }
 }
+
+resource "aws_autoscaling_attachment" "home_tg_attachment" {
+  autoscaling_group_name = aws_autoscaling_group.home_auto_sacling.name
+  lb_target_group_arn = aws_lb_target_group.home_target_group.arn
+}
+
+resource "aws_autoscaling_attachment" "mobile_tg_attachment" {
+  autoscaling_group_name = aws_autoscaling_group.mobile_auto_sacling.name
+  lb_target_group_arn = aws_lb_target_group.mobile_target_group.arn
+  depends_on = [ aws_autoscaling_attachment.home_tg_attachment ]
+}
+
+resource "aws_autoscaling_attachment" "laptop_tg_attachment" {
+  autoscaling_group_name = aws_autoscaling_group.laptop_auto_sacling.name
+  lb_target_group_arn = aws_lb_target_group.laptop_target_group.arn
+  depends_on = [ aws_autoscaling_attachment.mobile_tg_attachment ]
+}
