@@ -41,7 +41,7 @@ resource "aws_lb_listener_rule" "mobile_listner_rule" {
 }
 
 resource "aws_lb_listener_rule" "laptop_listerner_rule" {
-  listener_arn = aws_lb_target_group.laptop_target_group.arn
+  listener_arn = aws_lb_listener.lb_listener.arn
   priority = 101
   action {
     type = "forward"
