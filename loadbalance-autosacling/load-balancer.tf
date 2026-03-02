@@ -24,3 +24,32 @@ resource "aws_lb_listener" "lb_listener" {
     target_group_arn = aws_lb_target_group.home_target_group.arn
   }
 }
+
+resource "aws_lb_listener_rule" "mobile_listner_rule" {
+  listener_arn = aws_lb_listener.lb_listener.arn
+  priority = 100
+
+  action {
+    type = "forword"
+    target_group_arn = aws_lb_target_group.mobile_target_group.arn
+  }
+  condition {
+    path_pattern {
+      values = ["/mobile/*"]
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "laptop_listerner_rule" {
+  listener_arn = aws_lb_target_group.laptop_target_group.arn
+  priority = 101
+  action {
+    type = "forword"
+    target_group_arn = aws_lb_target_group.laptop_target_group.arn
+  }
+  condition {
+    path_pattern {
+      values = ["/laptop/*"]
+    }
+  }
+}
